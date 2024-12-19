@@ -1,0 +1,16 @@
+        
+<!-- ============================================================== -->
+<!-- Profile - style you can find in header.scss -->
+<!-- ============================================================== -->
+<div class="profile-text"><a  class=""> 使用者 A <i class="ti-angle-down font-12 m-l-5"></i></a></div>
+<div class="profile-img"><button [matMenuTriggerFor]="profile" mat-icon-button class="m-r-5 p-0 d-flex jc-c align-items-center"> <img src="assets/images/users/1.jpg" alt="user" class="profile-pic"> </button></div>
+
+<mat-menu #profile="matMenu" class="mymegamenu">
+    <button mat-menu-item>
+        <mat-icon>settings</mat-icon> 設定 </button>
+    <button mat-menu-item>
+        <mat-icon>account_box</mat-icon> 使用者資訊 </button>
+    <button mat-menu-item>
+        <mat-icon>exit_to_app</mat-icon> 登出 </button>
+</mat-menu>
+
