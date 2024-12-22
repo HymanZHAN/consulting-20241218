@@ -1,59 +1,63 @@
 import { Injectable } from '@angular/core';
 
 export interface Menu {
-  state: string;
+  path: string;
   name: string;
   type: string;
   icon: string;
+  state?: 'open' | 'close';
   children?: Menu[];
 }
 
 const MENUITEMS: Menu[] = [
-  { state: 'dashboard', name: '首頁', type: 'link', icon: 'av_timer' },
+  { path: 'dashboard', name: '首頁', type: 'link', icon: 'av_timer' },
   {
-    state: 'donate',
+    path: 'donate_management',
     name: '捐款管理',
-    type: 'link',
+    type: 'expansion',
     icon: 'blur_circular',
-    children: [{ state: 'donate_print', name: '捐款單據列印', type: 'link', icon: 'voicemail' }],
+    state: 'close',
+    children: [
+      { path: 'donate_print', name: '捐款單據列印', type: 'link', icon: 'voicemail' },
+      { path: 'credit_card', name: '信用卡捐款匯入', type: 'link', icon: 'crop_7_5' },
+    ],
   },
-  { state: 'credit_card', type: 'link', name: '信用卡捐款匯入', icon: 'crop_7_5' },
-  { state: 'grid', type: 'link', name: 'Grid List', icon: 'view_comfy' },
-  { state: 'lists', type: 'link', name: 'Lists', icon: 'view_list' },
-  { state: 'menu', type: 'link', name: 'Menu', icon: 'view_headline' },
-  { state: 'tabs', type: 'link', name: 'Tabs', icon: 'tab' },
-  { state: 'stepper', type: 'link', name: 'Stepper', icon: 'web' },
+  { path: 'grid', type: 'link', name: 'Grid List', icon: 'view_comfy' },
+  { path: 'lists', type: 'link', name: 'Lists', icon: 'view_list' },
+  { path: 'menu', type: 'link', name: 'Menu', icon: 'view_headline' },
+  { path: 'tabs', type: 'link', name: 'Tabs', icon: 'tab' },
+  { path: 'stepper', type: 'link', name: 'Stepper', icon: 'web' },
   {
-    state: 'expansion',
+    path: 'expansion',
     type: 'link',
     name: 'Expansion Panel',
     icon: 'vertical_align_center',
   },
-  { state: 'chips', type: 'link', name: 'Chips', icon: 'vignette' },
-  { state: 'toolbar', type: 'link', name: 'Toolbar', icon: 'voicemail' },
+  { path: 'chips', type: 'link', name: 'Chips', icon: 'vignette' },
+  { path: 'toolbar', type: 'link', name: 'Toolbar', icon: 'voicemail' },
   {
-    state: 'progress-snipper',
+    path: 'progress-snipper',
     type: 'link',
     name: 'Progress snipper',
     icon: 'border_horizontal',
   },
   {
-    state: 'progress',
+    path: 'progress',
     type: 'link',
     name: 'Progress Bar',
     icon: 'blur_circular',
   },
   {
-    state: 'dialog',
+    path: 'dialog',
     type: 'link',
     name: 'Dialog',
     icon: 'assignment_turned_in',
   },
-  { state: 'tooltip', type: 'link', name: 'Tooltip', icon: 'assistant' },
-  { state: 'snackbar', type: 'link', name: 'Snackbar', icon: 'adb' },
-  { state: 'slider', type: 'link', name: 'Slider', icon: 'developer_mode' },
+  { path: 'tooltip', type: 'link', name: 'Tooltip', icon: 'assistant' },
+  { path: 'snackbar', type: 'link', name: 'Snackbar', icon: 'adb' },
+  { path: 'slider', type: 'link', name: 'Slider', icon: 'developer_mode' },
   {
-    state: 'slide-toggle',
+    path: 'slide-toggle',
     type: 'link',
     name: 'Slide Toggle',
     icon: 'all_inclusive',

@@ -7,8 +7,8 @@ import { DemoMaterialModule } from 'src/app/demo-material-module';
   standalone: true,
   imports: [DemoMaterialModule, MatButtonModule],
   templateUrl: './donate_print.component.html',
-  styleUrls: ['./donate_print.component.scss']
+  styleUrls: ['./donate_print.component.scss'],
 })
 export class DonatePrintComponent {
-  constructor() { }
+  constructor() {}
 }

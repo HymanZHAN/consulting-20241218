@@ -1,18 +1,31 @@
-<mat-nav-list appAccordion>
-  <mat-list-item
-    appAccordionLink
-    *ngFor="let menuitem of menuItems.getMenuitem()"
-    routerLinkActive="selected"
-  >
-    <a
-      class=""
-      appAccordionToggle
-      [routerLink]="['/', menuitem.state]"
-      *ngIf="menuitem.type === 'link'"
-    >
-      <mat-icon>{{ menuitem.icon }}</mat-icon>
-      <span>{{ menuitem.name }}</span>
-      <span fxFlex></span>
-    </a>
-  </mat-list-item>
+<mat-nav-list>
+  @for (item of menuItems.getMenuitem(); track item) {
+    @if (item.type === "link") {
+      <mat-list-item routerLinkActive="selected" (click)="recordCurrentPath(item)">
+        <a [routerLink]="['/', item.path]">
+          <mat-icon>{{ item.icon }}</mat-icon>
+          <span>{{ item.name }}</span>
+        </a>
+      </mat-list-item>
+    } @else if (item.type === "expansion") {
+      <mat-list-item routerLinkActive="selected" (click)="toggleMenuState(item)">
+        <a [routerLink]="['/', item.path]">
+          <mat-icon>{{ item.icon }}</mat-icon>
+          <span>{{ item.name }}</span>
+        </a>
+      </mat-list-item>
+      @if (item.state === "open") {
+        <mat-nav-list class="sub-nav-list">
+          @for (child of item.children; track child) {
+            <mat-list-item routerLinkActive="selected" (click)="recordCurrentPath(child)">
+              <a [routerLink]="['/', child.path]">
+                <mat-icon>{{ child.icon }}</mat-icon>
+                <span>{{ child.name }}</span>
+              </a>
+            </mat-list-item>
+          }
+        </mat-nav-list>
+      }
+    }
+  }
 </mat-nav-list>
