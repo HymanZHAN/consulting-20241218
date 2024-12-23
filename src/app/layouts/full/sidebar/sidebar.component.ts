@@ -2,7 +2,7 @@ import { MediaMatcher } from '@angular/cdk/layout';
 import { CommonModule } from '@angular/common';
 import { ChangeDetectorRef, Component, OnDestroy } from '@angular/core';
 import { MatIconModule } from '@angular/material/icon';
-import { ActivatedRoute, RouterModule } from '@angular/router';
+import { RouterModule } from '@angular/router';
 import { DemoMaterialModule } from 'src/app/demo-material-module';
 import { Menu, MenuItems } from '../../../shared/menu-items/menu-items';
 

@@ -3,15 +3,24 @@
     @if (item.type === "link") {
       <mat-list-item routerLinkActive="selected" (click)="recordCurrentPath(item)">
         <a [routerLink]="['/', item.path]">
-          <mat-icon>{{ item.icon }}</mat-icon>
-          <span>{{ item.name }}</span>
+          <span class="menu-content">
+            <mat-icon>{{ item.icon }}</mat-icon>
+            <span>{{ item.name }}</span>
+          </span>
         </a>
       </mat-list-item>
     } @else if (item.type === "expansion") {
-      <mat-list-item routerLinkActive="selected" (click)="toggleMenuState(item)">
+      <mat-list-item
+        routerLinkActive="selected"
+        (click)="toggleMenuState(item)"
+        [class.expanded]="item.state === 'open'"
+      >
         <a [routerLink]="['/', item.path]">
-          <mat-icon>{{ item.icon }}</mat-icon>
-          <span>{{ item.name }}</span>
+          <span class="menu-content">
+            <mat-icon>{{ item.icon }}</mat-icon>
+            <span>{{ item.name }}</span>
+          </span>
+          <mat-icon class="dd-icon">keyboard_arrow_down</mat-icon>
         </a>
       </mat-list-item>
       @if (item.state === "open") {
@@ -19,8 +28,10 @@
           @for (child of item.children; track child) {
             <mat-list-item routerLinkActive="selected" (click)="recordCurrentPath(child)">
               <a [routerLink]="['/', child.path]">
-                <mat-icon>{{ child.icon }}</mat-icon>
-                <span>{{ child.name }}</span>
+                <span class="menu-content">
+                  <mat-icon>{{ child.icon }}</mat-icon>
+                  <span>{{ child.name }}</span>
+                </span>
               </a>
             </mat-list-item>
           }
